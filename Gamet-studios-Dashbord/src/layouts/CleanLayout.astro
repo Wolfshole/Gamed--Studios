@@ -3,7 +3,7 @@ const { title = 'Gamet Studios Dashboard', description = 'Ein Dashbord für Game
 
 import ServerDropdown from '../components/ServerDropdown.astro';
 import UserDropdown from '../components/UserDropdown.astro';
-import '../styles/gloabel.css';
+import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
@@ -14,10 +14,11 @@ import '../styles/gloabel.css';
     <title>{title}</title>
     <meta name="description" content={description}>
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon / Browser Tab Logo -->
+    <link rel="icon" type="image/png" href="/gs_pb_icon_black.png">
+    <link rel="apple-touch-icon" href="/gs_pb_icon_black.png">
     
-    <!-- Separate Style Dateien -->
-    <link rel="stylesheet" href="/styles/globals.css">
+    <link rel="stylesheet" href="/styles/global.css">
     <link rel="stylesheet" href="/styles/components/user-dropdown.css">
     <link rel="stylesheet" href="/styles/components/server-dropdown.css">
 </head>
@@ -27,13 +28,22 @@ import '../styles/gloabel.css';
     <aside class="w-72 bg-[#1e2937] border-r border-slate-700 flex-shrink-0">
         <div class="p-6 border-b border-slate-700">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-xl font-bold">G</div>
+                <!-- Logo mit schönerem Styling -->
+                <div class="logo-container">
+                    <img 
+                        src="/gs_pb_icon_black.png" 
+                        alt="Gamestudios Logo" 
+                        class="logo"
+                    >
+                </div>
+                
                 <div>
                     <div class="font-bold text-xl tracking-tight">Gamet Studios</div>
                 </div>
             </div>
         </div>
 
+        <!-- Rest bleibt gleich -->
         <div class="p-6">
             <ServerDropdown />
         </div>
@@ -43,14 +53,19 @@ import '../styles/gloabel.css';
             <a href="/modules" class="nav-item">📦 Module</a>
             <a href="/settings" class="nav-item">⚙️ Einstellungen</a>
             <a href="/billing" class="nav-item">💰 Rechnungen</a>
+            <a href="/impressum" class="nav-item">🔨 Impressum</a>
+
+            <footer class="absolute bottom-0 w-full p-4 text-center text-sm text-slate-500">
+                &copy; {new Date().getFullYear()} Gamet Studios. Alle Rechte vorbehalten.
+                <UserDropdown />
+            </footer>
         </nav>
     </aside>
 
-    <!-- Hauptbereich -->
+    <!-- ... Rest unverändert ... -->
     <div class="flex-1 flex flex-col">
         <header class="h-16 bg-[#1e2937] border-b border-slate-700 flex items-center justify-between px-8">
             <h1 class="text-2xl font-semibold">{title}</h1>
-            <UserDropdown />
         </header>
 
         <main class="flex-1 p-8 overflow-auto">
@@ -58,7 +73,6 @@ import '../styles/gloabel.css';
         </main>
     </div>
 
-    
     <script src="/scripts/main.js" type="module"></script>
 </body>
 </html>

@@ -3,5 +3,56 @@ import CleanLayout from "../layouts/CleanLayout.astro";
 ---
 
 <CleanLayout title="Dashboard">
-	
+    <h1 class="text-3xl font-bold mb-4">Willkommen</h1>
+    <p>
+        Willkommen auf dem Dasboard von Gamet Studios! Hier findest du alle wichtigen Informationen und Tools, um denn Bot zu verwalten und zu konfigurieren.
+    </p>
+
+    <p>
+        Wähle zu erst einen Server aus dem Dropdown-Menü auf der linken Seite aus, um die spezifischen Einstellungen und Module für diesen Server zu verwalten.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Webseite -->
+        <div class="bg-[#1e2937] border border-emerald-500/30 rounded-2xl p-6 hover:border-emerald-500 transition-all">
+            <div class="flex items-center gap-4">
+                <div class="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
+                    <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                </div>
+                <div>
+                    <p class="font-semibold text-lg">Website</p>
+                    <p class="text-emerald-400 text-sm font-medium">Online</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashbord -->
+
+    <div class="bg-[#1e2937] border border-emerald-500/30 rounded-2xl p-6 hover:border-emerald-500 transition-all">
+            <div class="flex items-center gap-4">
+                <div class="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
+                    <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                </div>
+                <div>
+                    <p class="font-semibold text-lg">Dashboard</p>
+                    <p class="text-emerald-400 text-sm font-medium">Online</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team-Dashbord -->
+
+        <div class="bg-[#1e2937] border border-emerald-500/30 rounded-2xl p-6 hover:border-emerald-500 transition-all">
+            <div class="flex items-center gap-4">
+                <div class="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
+                    <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                </div>
+                <div>
+                    <p class="font-semibold text-lg">Team-Dashboard</p>
+                    <p class="text-emerald-400 text-sm font-medium">Comming soon</p> <!-- Fertig machen! -->
+                </div>
+            </div>
+        </div>
+
 </CleanLayout>
