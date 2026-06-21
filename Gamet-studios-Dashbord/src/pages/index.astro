@@ -3,14 +3,14 @@ import CleanLayout from "../layouts/CleanLayout.astro";
 ---
 
 <CleanLayout title="Dashboard">
-    <h1 class="text-3xl font-bold mb-4">Willkommen</h1>
-    <p>
-        Willkommen auf dem Dasboard von Gamet Studios! Hier findest du alle wichtigen Informationen und Tools, um denn Bot zu verwalten und zu konfigurieren.
-    </p>
+    <div class="mb-10">
+        <h2 class="text-3xl font-bold">Deine Server</h2>
+        <p class="text-slate-400">Wähle einen Server aus, den du verwalten möchtest</p>
+    </div>
 
-    <p>
-        Wähle zu erst einen Server aus dem Dropdown-Menü auf der linken Seite aus, um die spezifischen Einstellungen und Module für diesen Server zu verwalten.
-    </p>
+    <div id="servers-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Server-Karten werden hier per JavaScript eingefügt -->
+    </div>
 
 <!-- Status Karten -->
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">

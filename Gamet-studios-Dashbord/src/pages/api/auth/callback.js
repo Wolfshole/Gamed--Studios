@@ -2,10 +2,17 @@ export async function GET({ request, cookies }) {
   const code = new URL(request.url).searchParams.get('code');
   const clientId = import.meta.env.DISCORD_CLIENT_ID;
   const clientSecret = import.meta.env.DISCORD_CLIENT_SECRET;
-  const siteUrl = import.meta.env.SITE_URL || 'http://localhost:4321';
+  const siteUrl = 'http://localhost:4321';
+
+  console.log("Callback aufgerufen mit Code:", code ? "vorhanden" : "FEHLT");
 
   if (!code) {
     return new Response('Kein Code erhalten', { status: 400 });
+  }
+
+  if (!clientSecret) {
+    console.error("DISCORD_CLIENT_SECRET fehlt in .env");
+    return new Response('Client Secret fehlt', { status: 500 });
   }
 
   try {
@@ -23,17 +30,20 @@ export async function GET({ request, cookies }) {
 
     const tokenData = await tokenResponse.json();
 
-    if (tokenData.error) {
-      return new Response('Token-Fehler', { status: 400 });
+    console.log("Token Response Status:", tokenResponse.status);
+    console.log("Token Data:", tokenData);
+
+    if (!tokenResponse.ok) {
+      return new Response(`Token-Fehler: ${tokenData.error}`, { status: 400 });
     }
 
+    // User Daten holen
     const userResponse = await fetch('https://discord.com/api/users/@me', {
       headers: { Authorization: `Bearer ${tokenData.access_token}` },
     });
 
     const user = await userResponse.json();
 
-    // User-Daten im Cookie speichern
     cookies.set('discord_user', JSON.stringify({
       id: user.id,
       username: user.username,
@@ -41,15 +51,14 @@ export async function GET({ request, cookies }) {
       accessToken: tokenData.access_token,
     }), {
       path: '/',
-      maxAge: 60 * 60 * 24 * 7, // 7 Tage
+      maxAge: 60 * 60 * 24 * 7,
       httpOnly: true,
-      secure: import.meta.env.PROD,
     });
 
     return Response.redirect(siteUrl);
 
   } catch (error) {
-    console.error(error);
-    return new Response('Fehler bei der Anmeldung', { status: 500 });
+    console.error("Callback Fehler:", error);
+    return new Response('Interner Fehler', { status: 500 });
   }
 }
