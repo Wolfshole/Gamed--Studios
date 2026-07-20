@@ -1,0 +1,21 @@
+---
+import CleanLayout from "../layouts/CleanLayout.astro";
+---
+
+<CleanLayout title="Dashboard">
+  <div class="mb-10">
+    <h2 class="text-3xl font-bold">Deine Server</h2>
+    <p class="text-slate-400">
+      Wähle einen Server aus, den du verwalten möchtest
+    </p>
+  </div>
+
+  <div
+    id="servers-list"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    <!-- Wird per Script gefüllt -->
+  </div>
+</CleanLayout>
+
+<script src="/scripts/servers.js" type="module"></script>

@@ -1,0 +1,39 @@
+---
+const serversResponse = await fetch('http://localhost:3000/api/servers')
+  .then(r => r.json())
+  .catch(() => []);
+
+const servers: { id: string; name: string }[] = serversResponse || [];
+---
+
+<div class="mt-4">
+  <label class="block text-sm font-medium text-gray-400 mb-2">
+    Discord Server auswählen
+  </label>
+  
+  <select 
+    id="server-select"
+    class="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    <option value="">-- Bitte Server wählen --</option>
+    {servers.map((server) => (
+      <option value={server.id}>
+        {server.name}
+      </option>
+    ))}
+  </select>
+</div>
+
+<script>
+  const select = document.getElementById('server-select') as HTMLSelectElement;
+
+  if (select) {
+    select.addEventListener('change', (e: Event) => {
+      const target = e.target as HTMLSelectElement;
+      if (target && target.value) {
+        console.log('Ausgewählter Server ID:', target.value);
+        // Hier später weitere Aktionen (z.B. andere Daten laden)
+      }
+    });
+  }
+</script>

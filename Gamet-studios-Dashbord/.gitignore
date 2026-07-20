@@ -1,0 +1,43 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# Icons
+public/
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# vscode setting folder
+.vscode/
+
+# Local Netlify folder
+.netlify/
+netlify.toml
+
+# Prisma generated client
+/generated/prisma
+prisma.config.ts
+
+# Impressum
+/home/schule/Schreibtisch/Hostly/Gamet-studios-Bot/Gamet-studios-Dashbord/src/pages/impressum.astro
+

@@ -1,0 +1,11 @@
+# Deependencies
+node_modules/
+package-lock.json
+
+# env files
+.env
+# Local Netlify folder
+.netlify
+
+# Local VS Code
+.vscode/
